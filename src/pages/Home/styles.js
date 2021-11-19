@@ -6,9 +6,9 @@ export const Main = styled.div`
     flex-direction:row;
     img{
         height:240px;
-        position: absolute;
-        top:25em;
-        left:24em;
+        position: fixed;
+        top:22em;
+        left:18em;
     }
     h2{
         font-weight:bolder;

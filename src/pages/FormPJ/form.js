@@ -1,12 +1,12 @@
-import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, makeStyles, MenuItem, Radio, RadioGroup, Select, TextField } from '@material-ui/core';
+import { Button, FormControl, FormHelperText, InputLabel, makeStyles, MenuItem, Select, TextField } from '@material-ui/core';
 import { Row, Col } from 'react-grid-system';
-import { Form, useFormikContext, ErrorMessage } from 'formik'
+import { Form, useFormikContext } from 'formik'
 import FormCard from '../../components/FormCard';
 import Box from '@material-ui/core/Box';
 import { useHistory } from 'react-router-dom';
-import { goToHome, goToFormCG, goToFormCI, goToFormCO } from '../../routes/coordinator'
+import { goToHome } from '../../routes/coordinator'
 import { Buttons } from './styles'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Forms() {
     const classes = useStyles();
-    const { handleChange, values, errors, isSubmitting, setFieldValue, submitForm } = useFormikContext();
+    const { handleChange, values, errors, isSubmitting, setFieldValue } = useFormikContext();
     const history = useHistory()
 
     return (
 
         <FormCard showShadow>
-            <h1>Pessoa Fisica</h1>
+            <h1>Pessoa Jurídica</h1>
             <Form>
                 <Row>
                     <Col md={12}>
@@ -189,60 +189,15 @@ export default function Forms() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <FormLabel>Possui alguma restrição ou está em situação irregular?</FormLabel>
-                                <RadioGroup name='restricao' error={!!errors.resticao} label='restricao' value={values.restriçao} onChange={handleChange}>
-                                    <FormControlLabel control={<Radio value='true' />} label='Sim' />
-                                    <FormControlLabel control={<Radio value='false' />} label='Não' />
-                                </RadioGroup>
-                                {/* <ErrorMessage name="restricao" render={(msg) => {
-                                    console.log(msg, 'erro');
-                                    return <p >{msg}</p>;
-                                }} /> */}
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <FormLabel>Conhece como funciona consórcio imobilíario?</FormLabel>
-                                <RadioGroup name='conhece' label='conhece' value={values.conhece}>
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='true' />} label='Sim' />
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='false' />} label='Não' />
-                                </RadioGroup>
-                                {/* <p >{!!errors.conhece && 'DEU ERRO'}</p> */}
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <FormLabel>Qual a natureza da operação?</FormLabel>
-                                <RadioGroup name='natureza' label='natureza' value={values.natureza}>
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='co' />} label='Capital para Obras' error={!!errors.natureza} helperText={errors.natureza} />
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='cg' />} label='Capital de Giro' error={!!errors.natureza} helperText={errors.natureza} />
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='ci' />} label='Compra de Imóvel' error={!!errors.natureza} helperText={errors.natureza} />
-                                </RadioGroup>
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
                     <Buttons>
                         <Col md={6}>
-                            <Box m={1} pt={3}>
-                                <Button onClick={() => goToHome(history)} style={{ backgroundColor: '#CC0000', color: 'white' }} variant="contained" type='button'>Voltar para Pagina Principal</Button>
+                            <Box m={1} ml={10} pt={1}>
+                                <Button onClick={() => goToHome(history)} style={{ backgroundColor: '#CC0000' }} variant="contained" type='button'>Voltar para Pagina Principal</Button>
                             </Box>
                         </Col>
                         <Col md={6}>
-                            <Box m={1} pt={3}>
-                                <Button style={{ backgroundColor: 'grey' }} variant="contained" onClick={submitForm}>{isSubmitting ? 'Loading...' : <ArrowForwardIcon />}</Button>
+                            <Box m={1} ml={14} pt={1}>
+                                <Button style={{ backgroundColor: '#55DE28' }} variant="contained" type='submit'>{isSubmitting ? 'Loading...' : 'Próximo'}</Button>
                             </Box>
                         </Col>
                     </Buttons>

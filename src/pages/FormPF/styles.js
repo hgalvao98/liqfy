@@ -8,12 +8,11 @@ export const Main = styled.div`
     h1{
         align-self:center;
     }
-    `
-
+`
 
 export const Buttons = styled.div`
     display:flex;
-    justify-content:center;
+    justify-content:space-around;
     align-items:center;
     width:100%;
 `

@@ -2,26 +2,28 @@ import * as Yup from 'yup'
 
 
 export const initialValues = {
+    cnpj: '',
+    razao: '',
     nome: '',
-    cpf: '',
-    rg: '',
-    orgaoExpeditor: '',
-    nacionalidade: '',
-    naturalidade: '',
-    nascimento: '',
-    sexo: '',
-    celular: '',
-    email: '',
-    nomemae: '',
-    nomepai: '',
+    dataFundaçao: '',
     cep: '',
-    endereco: '',
-    numero: '',
+    logradouro: '',
     uf: '',
-    cidade: '',
+    numero: '',
     bairro: '',
-    restricao: false,
-    conhece: false
+    cidade: '',
+    email: '',
+    nomeSocio: '',
+    rg: '',
+    telefone: '',
+    nascimento: '',
+    orgaoExpedidor: '',
+    porcentagem: '',
+    nomePai: '',
+    nomeMae: '',
+    restriçao: false,
+    conhece: false,
+    natureza: ''
 }
 
 export const validationSchema = Yup.object({
@@ -82,10 +84,10 @@ export const validationSchema = Yup.object({
     bairro: Yup.string()
         .required('Obrigatório')
         .min(3, 'Digite o nome completo'),
-    restricao: Yup.boolean()
+    restriçao: Yup.string()
         .required('Obrigatório'),
-    conhece: Yup.boolean()
+    conhece: Yup.string()
         .required('Obrigatório'),
-    natureza: Yup.mixed()
+    natureza: Yup.string()
         .oneOf(['Capital para Obras'], ['Capital de Giro'], ['Compra de Imóvel'])
 })
