@@ -5,7 +5,6 @@ export const CardContainer = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-    width:50em;
     min-width:fit-content;
 
     ${({ showShadow }) => showShadow && 'box-shadow: 2px  0 8px rgb(0,0,0,.5)'};

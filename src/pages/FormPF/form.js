@@ -1,10 +1,10 @@
 import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, InputLabel, makeStyles, MenuItem, Radio, RadioGroup, Select, TextField } from '@material-ui/core';
 import { Row, Col } from 'react-grid-system';
-import { Form, useFormikContext, ErrorMessage } from 'formik'
+import { Form, useFormikContext } from 'formik'
 import FormCard from '../../components/FormCard';
 import Box from '@material-ui/core/Box';
 import { useHistory } from 'react-router-dom';
-import { goToHome, goToFormCG, goToFormCI, goToFormCO } from '../../routes/coordinator'
+import { goToHome } from '../../routes/coordinator'
 import { Buttons } from './styles'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Forms() {
     const classes = useStyles();
-    const { handleChange, values, errors, isSubmitting, setFieldValue, submitForm } = useFormikContext();
+    const { handleChange, values, errors, isSubmitting, submitForm } = useFormikContext();
     const history = useHistory()
 
     return (
@@ -227,7 +227,6 @@ export default function Forms() {
                                 <RadioGroup name='natureza' label='natureza' value={values.natureza}>
                                     <FormControlLabel onChange={handleChange} control={<Radio value='co' />} label='Capital para Obras' error={!!errors.natureza} helperText={errors.natureza} />
                                     <FormControlLabel onChange={handleChange} control={<Radio value='cg' />} label='Capital de Giro' error={!!errors.natureza} helperText={errors.natureza} />
-                                    <FormControlLabel onChange={handleChange} control={<Radio value='ci' />} label='Compra de Imóvel' error={!!errors.natureza} helperText={errors.natureza} />
                                 </RadioGroup>
                             </FormControl>
                         </Box>

@@ -1,4 +1,4 @@
-import { Button, FormControl, FormHelperText, InputLabel, makeStyles, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, FormControl, FormControlLabel, FormLabel, makeStyles, Radio, RadioGroup, TextField } from '@material-ui/core';
 import { Row, Col } from 'react-grid-system';
 import { Form, useFormikContext } from 'formik'
 import FormCard from '../../components/FormCard';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Forms() {
     const classes = useStyles();
-    const { handleChange, values, errors, isSubmitting, setFieldValue } = useFormikContext();
+    const { handleChange, values, errors, isSubmitting } = useFormikContext();
     const history = useHistory()
 
     return (
@@ -30,18 +30,119 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField label='Nome' name='nome' onChange={handleChange} error={!!errors.nome} helperText={errors.nome} className={classes.root} style={{ backgroundColor: '#F8F9FA' }} />
+                                <TextField label='CNPJ' name='cnpj' onChange={handleChange} error={!!errors.cnpj} helperText={errors.cnpj} className={classes.root} style={{ backgroundColor: '#F8F9FA' }} />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} value={values.razao} error={!!errors.razao} helperText={errors.razao} type='text' style={{ backgroundColor: '#F8F9FA' }} label='Razão Social' name='razao' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} value={values.nome} error={!!errors.nome} helperText={errors.nome} label='Nome Fantasia' name='nome' type='text' style={{ backgroundColor: '#F8F9FA' }} />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.dataFundacao} error={!!errors.dataFundacao} helperText={errors.dataFundacao} label='Data de Fundação' name='dataFundacao' mask='00/00/0000' type='text' placeholder='00/00/000' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <Box m={1} pt={3}>
+                            <h1>Endereço</h1>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cep} error={!!errors.cep} helperText={errors.cep} label='CEP' name='cep' type='text' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.uf} error={!!errors.uf} helperText={errors.uf} label='UF' name='uf' type='text' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.numero} error={!!errors.numero} helperText={errors.numero} label='Numero' name='numero' type='text' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={12}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.logradouro} error={!!errors.logradouro} helperText={errors.logradouro} label='Logradouro' name='logradouro' type='text' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.bairro} error={!!errors.bairro} helperText={errors.bairro} label='Bairro' name='bairro' type='text' placeholder='' />
                             </FormControl>
                         </Box>
                     </Col>
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} value={values.cpf} error={!!errors.cpf} helperText={errors.cpf} type='text' placeholder='000.000.000-00' style={{ backgroundColor: '#F8F9FA' }} label='CPF' name='cpf' />
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cidade} error={!!errors.cidade} helperText={errors.cidade} label='Cidade' name='cidade' type='text' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <Box m={1} pt={3}>
+                            <h1>Sócio</h1>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField label='Nome' name='nomeSocio' onChange={handleChange} error={!!errors.nomeSocio} helperText={errors.nomeSocio} className={classes.root} style={{ backgroundColor: '#F8F9FA' }} />
                             </FormControl>
                         </Box>
                     </Col>
                     <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.email} error={!!errors.email} helperText={errors.email} label='Email' name='email' type='email' placeholder='' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={4}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} value={values.cpf} error={!!errors.cpf} helperText={errors.cpf} type='text' placeholder='000.000.000-00' style={{ backgroundColor: '#F8F9FA' }} label='CPF' name='cpf' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={4}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
                                 <TextField onChange={handleChange} value={values.rg} error={!!errors.rg} helperText={errors.rg} label='RG' name='rg' type='text' placeholder='000000000' style={{ backgroundColor: '#F8F9FA' }} />
@@ -51,66 +152,23 @@ export default function Forms() {
                     <Col md={4}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.orgaoExpedidor} error={!!errors.orgaoExpedidor} helperText={errors.orgaoExpedidor} label='Órgão Expedidor' name='orgaoExpedidor' type='text' placeholder='AAA/AA' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={4}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.nacionalidade} error={!!errors.nacionalidade} helperText={errors.nacionalidade} label='Nacionalidade' name='nacionalidade' type='text' placeholder='Pais' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={4}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.nascimento} error={!!errors.nascimento} helperText={errors.nascimento} label='Data de Nascimento' name='nascimento' mask='00/00/0000' type='text' placeholder='00/00/000' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth variant="filled">
-                                <InputLabel>Selecione seu sexo</InputLabel>
-                                <Select name='sexo' label="Age" onChange={handleChange} value={values.sexo} error={!!errors.sexo} style={{ backgroundColor: '#F8F9FA' }}>
-                                    <MenuItem value='' disabled></MenuItem>
-                                    <MenuItem value='M'>M</MenuItem>
-                                    <MenuItem value='F'>F</MenuItem>
-                                    <MenuItem value='Outro'>Outro</MenuItem>
-                                    <MenuItem value='Prefiro Não Comentar'>Prefiro Não Comentar</MenuItem>
-                                </Select>
-                                <FormHelperText>{errors.sexo}</FormHelperText>
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={6}>
-                        {!!(values.sexo === 'Outro') && <Box m={1} pt={3}> <FormControl fullWidth ><TextField style={{ backgroundColor: '#F8F9FA' }} name='outrosexo' type='text' value={values.outrosexo} error={!!errors.outrosexo} helperText={errors.outrosexo} pstyle={{ backgroundColor: '#F8F9FA' }} placeholder='Digite seu sexo' /></FormControl> </Box>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.naturalidade} error={!!errors.naturalidade} helperText={errors.naturalidade} label='Naturalidade' name='naturalidade' type='text' placeholder='UF e Cidade' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
                                 <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.celular} error={!!errors.celular} helperText={errors.celular} label='Celular' name='celular' type='text' placeholder='(000)000000000' />
                             </FormControl>
                         </Box>
                     </Col>
+                </Row>
+                <Row>
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.email} error={!!errors.email} helperText={errors.email} label='Email' name='email' type='email' placeholder='' />
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.orgaoExpedidor} error={!!errors.orgaoExpedidor} helperText={errors.orgaoExpedidor} label='Órgão Expedidor' name='orgaoExpedidor' type='text' placeholder='AAA/AA' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.nascimento} error={!!errors.nascimento} helperText={errors.nascimento} label='Data de Nascimento' name='nascimento' mask='00/00/0000' type='text' placeholder='00/00/000' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -136,7 +194,13 @@ export default function Forms() {
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
-                            <h1>Endereço</h1>
+                            <FormControl fullWidth>
+                                <FormLabel>Possui alguma restrição ou está em situação irregular?<span> *Obrigatório</span></FormLabel>
+                                <RadioGroup id="restricao" type='radio' error={errors.restricao} helperText={errors.restricao} label='restricao' value={values.restricao} onChange={handleChange}>
+                                    <FormControlLabel value="Sim" id='restricao1' name='restricao' control={<Radio />} label="Sim" />
+                                    <FormControlLabel value="Não" id='restricao2' name='restricao' control={<Radio />} label="Não" />
+                                </RadioGroup>
+                            </FormControl>
                         </Box>
                     </Col>
                 </Row>
@@ -144,46 +208,24 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.endereco} error={!!errors.endereco} helperText={errors.endereco} label='Endereço' name='endereco' type='text' placeholder='' />
+                                <FormLabel>Conhece como funciona consórcio imobilíario?<span> *Obrigatório</span></FormLabel>
+                                <RadioGroup name='conhece' label='conhece' value={values.conhece}>
+                                    <FormControlLabel onChange={handleChange} control={<Radio value='true' />} label='Sim' />
+                                    <FormControlLabel onChange={handleChange} control={<Radio value='false' />} label='Não' />
+                                </RadioGroup>
                             </FormControl>
                         </Box>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={4}>
+                    <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.numero} error={!!errors.numero} helperText={errors.numero} label='Numero' name='numero' type='text' placeholder='' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={4}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cep} error={!!errors.cep} helperText={errors.cep} label='CEP' name='cep' type='text' placeholder='' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={4}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.uf} error={!!errors.uf} helperText={errors.uf} label='UF' name='uf' type='text' placeholder='' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.bairro} error={!!errors.bairro} helperText={errors.bairro} label='Bairro' name='bairro' type='text' placeholder='' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cidade} error={!!errors.cidade} helperText={errors.cidade} label='Cidade' name='cidade' type='text' placeholder='' />
+                                <FormLabel>Qual a natureza da operação?<span> *Obrigatório</span></FormLabel>
+                                <RadioGroup name='natureza' label='natureza' value={values.natureza}>
+                                    <FormControlLabel onChange={handleChange} control={<Radio value='co' />} label='Capital para Obras' error={!!errors.natureza} helperText={errors.natureza} />
+                                    <FormControlLabel onChange={handleChange} control={<Radio value='cg' />} label='Capital de Giro' error={!!errors.natureza} helperText={errors.natureza} />
+                                </RadioGroup>
                             </FormControl>
                         </Box>
                     </Col>
@@ -203,7 +245,7 @@ export default function Forms() {
                     </Buttons>
                 </Row>
             </Form>
-        </FormCard>
+        </FormCard >
 
 
 

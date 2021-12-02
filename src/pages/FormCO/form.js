@@ -24,7 +24,7 @@ export default function Forms() {
     return (
 
         <FormCard showShadow>
-            <h1>Capital de Giro</h1>
+            <h1>Capital para Obras</h1>
             <Form>
                 <Row>
                     <Col md={12}>

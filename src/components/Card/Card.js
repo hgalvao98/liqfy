@@ -12,8 +12,8 @@ export default function Card() {
         <Main>
             <h1>Qual tipo de crédito você precisa?</h1>
             <Buttons>
-                <button onClick={()=>goToFormPJ(history)}>Crédito para Pessoa Jurídica</button>
-                <button onClick={()=>goToFormPF(history)}>Crédito para Pessoa Física</button>
+                <button onClick={() => goToFormPJ(history)}>Crédito para Pessoa Jurídica</button>
+                <button onClick={() => goToFormPF(history)}>Crédito para Pessoa Física</button>
             </Buttons>
         </Main>
     )

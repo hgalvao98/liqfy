@@ -5,7 +5,7 @@ export const initialValues = {
     cnpj: '',
     razao: '',
     nome: '',
-    dataFundaçao: '',
+    dataFundacao: '',
     cep: '',
     logradouro: '',
     uf: '',
@@ -27,67 +27,58 @@ export const initialValues = {
 }
 
 export const validationSchema = Yup.object({
+    cnpj: Yup.string()
+        .required('Obrigatório')
+        .min(14, 'Digite todos os numeros do seu CNPJ')
+        .max(14, 'Digite todos os numeros do seu CNPJ'),
+    razao: Yup.string()
+        .min(3, 'Digite a Razão Social completa')
+        .required('Obrigatório'),
     nome: Yup.string()
         .min(3, 'Digite seu nome completo')
         .required('Obrigatório'),
-    cpf: Yup.string()
+    dataFundacao: Yup.string()
         .required('Obrigatório')
-        .min(11, 'Digite todos os numeros do seu CPF')
-        .max(11, 'Digite todos os numeros do seu CPF'),
-    rg: Yup.string()
-        .required('Obrigatório')
-        .min(9, 'Digite todos os numeros do seu RG')
-        .max(9, 'Digite todos os numeros do seu RG'),
-    orgaoExpedidor: Yup.string()
-        .required('Obrigatório'),
-    nacionalidade: Yup.string()
-        .required('Obrigatório'),
-    naturalidade: Yup.string()
-        .required('Obrigatório'),
-    nascimento: Yup.string()
-        .required('Obrigatório')
-        .max(8, 'Digite sua data de nascimento no seguinte formato DD/MM/AAAA'),
-    sexo: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['M', 'F', 'Outro', 'Prefiro Não Comentar']),
-    outrosexo: Yup.string()
-        .required('Obrigatório')
-        .min(3),
-    celular: Yup.string()
-        .required('Obrigatório')
-        .min(12, 'Digite todos os numeros com DDD'),
-    nomemae: Yup.string()
-        .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
-    nomepai: Yup.string()
-        .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
-    email: Yup.string()
-        .email('Invalid email address')
-        .required('Required'),
+        .max(8, 'Digite sua data de fundação no seguinte formato DD/MM/AAAA'),
     cep: Yup.string()
         .required('Obrigatório')
         .min(8, 'Digite todos os numeros do seu CEP')
         .max(8, 'Digite todos os numeros do seu CEP'),
-    endereco: Yup.string()
+    logradouro: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
-    numero: Yup.string()
-        .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o logradouro completo'),
     uf: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o uf completo'),
+    numero: Yup.string()
+        .required('Obrigatório')
+        .min(3, 'Digite o numero completo'),
     cidade: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o nome da cidade completo'),
     bairro: Yup.string()
         .required('Obrigatório')
+        .min(3, 'Digite o nome do bairro completo'),
+    email: Yup.string()
+        .email('E-mail invalido'),
+    nomeSocio: Yup.string()
+        .min(3, 'Digite seu nome completo'),
+    rg: Yup.string()
+        .min(9, 'Digite todos os numeros do seu RG')
+        .max(9, 'Digite todos os numeros do seu RG'),
+    telefone: Yup.string()
+        .min(12, 'Digite todos os numeros com DDD'),
+    nascimento: Yup.string()
+        .max(8, 'Digite sua data de nascimento no seguinte formato DD/MM/AAAA'),
+    orgaoExpedidor: Yup.string(),
+    porcentagem: Yup.string()
+        .min(0, 'Digite a porcentagem correta'),
+    nomemae: Yup.string()
         .min(3, 'Digite o nome completo'),
-    restriçao: Yup.string()
-        .required('Obrigatório'),
-    conhece: Yup.string()
-        .required('Obrigatório'),
+    nomepai: Yup.string()
+        .min(3, 'Digite o nome completo'),
+    restriçao: Yup.string(),
+    conhece: Yup.string(),
     natureza: Yup.string()
-        .oneOf(['Capital para Obras'], ['Capital de Giro'], ['Compra de Imóvel'])
+        .oneOf(['Capital para Obras'], ['Capital de Giro'])
 })

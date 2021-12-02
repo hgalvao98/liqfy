@@ -20,11 +20,12 @@ export const initialValues = {
     uf: '',
     cidade: '',
     bairro: '',
-    restricao: false,
-    conhece: false
+    restricao: '',
+    conhece: false,
+    natureza: ''
 }
 
-export const validationSchema = Yup.object({
+export const validationSchema = Yup.object().shape({
     nome: Yup.string()
         .min(3, 'Digite seu nome completo')
         .required('Obrigatório'),
@@ -61,7 +62,7 @@ export const validationSchema = Yup.object({
         .required('Obrigatório')
         .min(3, 'Digite o nome completo'),
     email: Yup.string()
-        .email('Invalid email address')
+        .email('E-mail invalido')
         .required('Required'),
     cep: Yup.string()
         .required('Obrigatório')
@@ -69,23 +70,23 @@ export const validationSchema = Yup.object({
         .max(8, 'Digite todos os numeros do seu CEP'),
     endereco: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o endereço completo'),
     numero: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o numero completo'),
     uf: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o UF completo'),
     cidade: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
+        .min(3, 'Digite o nome da cidade completo'),
     bairro: Yup.string()
         .required('Obrigatório')
-        .min(3, 'Digite o nome completo'),
-    restricao: Yup.boolean()
+        .min(3, 'Digite o nome do bairro completo'),
+    restricao: Yup.string()
         .required('Obrigatório'),
     conhece: Yup.boolean()
         .required('Obrigatório'),
     natureza: Yup.mixed()
-        .oneOf(['Capital para Obras'], ['Capital de Giro'], ['Compra de Imóvel'])
+        .oneOf(['Capital para Obras'], ['Capital de Giro'])
 })

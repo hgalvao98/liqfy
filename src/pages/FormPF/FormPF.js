@@ -5,7 +5,7 @@ import { initialValues } from './form-data';
 import { validationSchema } from './form-data';
 import Forms from './form'
 import { Container } from 'react-grid-system';
-import { goToFormCG, goToFormCO, goToFormCI, goToHome } from '../../routes/coordinator';
+import { goToFormCG, goToFormCO } from '../../routes/coordinator';
 import { useHistory } from 'react-router-dom';
 
 
@@ -14,13 +14,10 @@ export default function FormPF() {
     const history = useHistory()
 
     const goToForms = values => {
-
+        console.log('AAAAAAAAAAAAAA', values)
         switch (values.natureza) {
             case 'cg':
                 goToFormCG(history)
-                break;
-            case 'ci':
-                goToFormCI(history)
                 break;
             default:
                 goToFormCO(history)

@@ -11,8 +11,5 @@ export const Main = styled.div`
 `
 
 export const Buttons = styled.div`
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    width:100%;
+   
 `
