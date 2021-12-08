@@ -5,31 +5,11 @@ import { initialValues } from './form-data';
 import { validationSchema } from './form-data';
 import Forms from './form'
 import { Container } from 'react-grid-system';
-import { goToFormCG, goToFormCO } from '../../routes/coordinator';
+import { goToHome } from '../../routes/coordinator';
 import { useHistory } from 'react-router-dom';
 
 
 export default function FormCO() {
-
-    const history = useHistory()
-
-    const goToForms = values => {
-        console.log('AAAAAAAAAAAAAA', values)
-        switch (values.natureza) {
-            case 'cg':
-                goToFormCG(history)
-                break;
-            default:
-                goToFormCO(history)
-                break;
-
-        }
-    }
-
-    const handleSubmit = (formData) => {
-        console.log(formData, 'formData')
-        goToForms(formData)
-    }
 
     return (
         <Main style={{ backgroundColor: '#E6E6EA' }}>
@@ -37,7 +17,14 @@ export default function FormCO() {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        console.log(values)
+                        alert('Informações enviadas com sucesso!');
+                        resetForm();
+                        // goToHome(history);
+                        setSubmitting(false);
+                    }
+                    }
                     validateOnChange={false}
                 >
                     <Forms />

@@ -22,9 +22,9 @@ export const Items = styled.div`
     @media only screen  
     and (max-device-width: 1024px) 
     and (-webkit-min-device-pixel-ratio: 1) {
-    img, h2{
-        display:none;
-    }
+        img, h2{
+            display:none;
+        }
     
 }
 `

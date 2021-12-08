@@ -2,6 +2,7 @@ import * as Yup from 'yup'
 
 
 export const initialValues = {
+    cadastro: '',
     nome: '',
     celular: '',
     email: '',
@@ -15,6 +16,8 @@ export const initialValues = {
 }
 
 export const validationSchema = Yup.object().shape({
+    cadastro: Yup.string()
+        .required('Obrigatório'),
     nome: Yup.string()
         .min(3, 'Digite seu nome completo')
         .required('Obrigatório'),
@@ -28,21 +31,15 @@ export const validationSchema = Yup.object().shape({
         .required('Obrigatório')
         .min(1, 'Digite um valor de no minimo 1 digito'),
     prazoQuitar: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['5 Anos'], ['10 Anos'], ['15 Anos']),
+        .required('Obrigatório'),
     tipoGarantia: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['Residencial'], ['Terreno'], ['Industrial'], ['Comercial'], ['Rural'], ['Nenhuma']),
+        .required('Obrigatório'),
     estAvaliacao: Yup.string()
         .required('Obrigatório')
         .min(1, 'Digite um valor de no minimo 1 digito'),
     imovelReg: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['Sim'], ['Não']),
+        .required('Obrigatório'),
     capitalQuitar: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['Sim'], ['Não']),
+        .required('Obrigatório'),
     segundaGarantia: Yup.string()
-        .required('Obrigatório')
-        .oneOf(['Sim'], ['Não']),
 })
