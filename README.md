@@ -2,7 +2,7 @@
 
 This project was made for Liqfy, a loan company based in Brazil. 
 
-The main goal of this project was to get leads using the form develop integraded with RDStation.
+The main goal of this project was to get leads using the form developed integraded with RDStation.
 
 To test this project locally, clone this repository following by a npm install and a npm run start.
 
