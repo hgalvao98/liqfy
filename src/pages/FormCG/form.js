@@ -1,14 +1,15 @@
-import { Button, FormControl, FormControlLabel, FormLabel, makeStyles, Radio, RadioGroup, TextField } from '@material-ui/core';
+import { Button, FilledInput, FormControl, FormControlLabel, FormHelperText, FormLabel, InputAdornment, InputLabel, makeStyles, Radio, RadioGroup, TextField } from '@material-ui/core';
 import { Row, Col } from 'react-grid-system';
-import { Form, useFormikContext } from 'formik'
+import { useFormikContext } from 'formik'
 import FormCard from '../../components/FormCard';
 import Box from '@material-ui/core/Box';
 import { useHistory } from 'react-router-dom';
 import { goToHome } from '../../routes/coordinator'
 import { Buttons } from './styles'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+// import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import React, { useEffect } from 'react'
-import { Home } from '@material-ui/icons';
+// import { Home } from '@material-ui/icons';
+import InputMask from 'react-input-mask';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,6 @@ export default function Forms() {
     const classes = useStyles();
     const { handleChange, values, errors, isSubmitting, submitForm } = useFormikContext();
     const history = useHistory()
-
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://d335luupugsy2.cloudfront.net/js/loader-scripts/6ccdd732-68a0-4d25-813b-7deaccad57fe-loader.js";
@@ -30,10 +30,11 @@ export default function Forms() {
         document.body.appendChild(script)
     }, [])
 
+
     return (
         <FormCard showShadow>
             <h1>Capital de Giro</h1>
-            <form name="Capital de Giro">
+            <form onSubmit={submitForm} name="Capital de Giro">
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
@@ -58,7 +59,23 @@ export default function Forms() {
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.celular} error={!!errors.celular} helperText={errors.celular} label='Celular' name='celular' type='text' placeholder='(000)000000000' />
+                                <InputMask
+                                    mask={'(99)99999-9999'}
+                                    value={values.celular}
+                                    onChange={handleChange}>
+                                    {() => (
+                                        <TextField
+                                            variant='standard'
+                                            onChange={handleChange}
+                                            label='Celular'
+                                            name='celular'
+                                            error={!!errors.celular}
+                                            helperText={errors.celular}
+                                            type="text"
+                                            style={{ backgroundColor: '#F8F9FA' }}
+                                        />
+                                    )}
+                                </InputMask>
                             </FormControl>
                         </Box>
                     </Col>
@@ -73,8 +90,11 @@ export default function Forms() {
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.valorCapital} error={!!errors.valorCapital} helperText={errors.valorCapital} label='Valor de Capital para levantar' name='valorCapital' type='text' />
+                            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+                                <InputLabel htmlFor="filled-adornment-amount">Valor de capital para levantar</InputLabel>
+                                <FilledInput startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                    id="filled-adornment-amount" onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.valorCapital} error={!!errors.valorCapital} label='Valor de Capital para levantar' name='valorCapital' type='text' />
+                                <FormHelperText>{errors.valorCapital}</FormHelperText>
                             </FormControl>
                         </Box>
                     </Col>
@@ -111,8 +131,11 @@ export default function Forms() {
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.estAvaliacao} error={!!errors.estAvaliacao} helperText={errors.estAvaliacao} label='Estimativa de avaliação do imóvel' name='estAvaliacao' type='text' />
+                            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+                                <InputLabel htmlFor="filled-adornment-amount">Estimativa de avaliação do imóvel</InputLabel>
+                                <FilledInput startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                    id="filled-adornment-amount" onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.estAvaliacao} error={!!errors.estAvaliacao} label='Valor de Capital para levantar' name='estAvaliacao' type='text' />
+                                <FormHelperText>{errors.estAvaliacao}</FormHelperText>
                             </FormControl>
                         </Box>
                     </Col>
@@ -156,7 +179,7 @@ export default function Forms() {
                 <Buttons>
                     <Button onClick={() => goToHome(history)} style={{ backgroundColor: '#CC0000', color: 'white' }} variant="contained" type='button'>Voltar para Home</Button>
 
-                    <Button onClick={submitForm} type='submit' style={{ backgroundColor: '#56DD27' }} variant="contained">{isSubmitting ? 'Loading...' : 'Enviar'}</Button>
+                    <Button type='submit' style={{ backgroundColor: '#56DD27' }} variant="contained">{isSubmitting ? 'Loading...' : 'Enviar'}</Button>
                 </Buttons>
             </form>
         </FormCard >

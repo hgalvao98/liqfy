@@ -23,7 +23,7 @@ export const validationSchema = Yup.object().shape({
         .required('Obrigatório'),
     celular: Yup.string()
         .required('Obrigatório')
-        .min(12, 'Digite todos os numeros com DDD'),
+        .min(11, 'Digite todos os numeros com DDD'),
     email: Yup.string()
         .email('E-mail invalido')
         .required('Required'),
