@@ -1,3 +1,16 @@
+# Liqfy Project 
+
+This project was made for Liqfy, a loan company based in Brazil. 
+
+The main goal of this project was to get leads using the form develop integraded with RDStation.
+
+To test this project locally, clone this repository following by a npm install and a npm run start.
+
+If you want to visit the project the link is:
+
+#
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
