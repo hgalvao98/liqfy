@@ -30,7 +30,7 @@ export const Buttons = styled.div`
     display:flex;
     flex-direction:column;
     margin:1em;
-    height:8em;
+    height:12em;
     button{
         font-family: 'Roboto', sans-serif;
         font-weight:bold;

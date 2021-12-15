@@ -32,7 +32,7 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <FormLabel>Qual o tipo de cadastro? <span> *Obrigatório</span></FormLabel>
+                                <FormLabel>Qual o tipo de cadastro? <span>(*)</span></FormLabel>
                                 <RadioGroup onChange={handleChange} name='payload.cf_qual_o_tipo_de_cadastro' label='payload.cf_qual_o_tipo_de_cadastro' value={values.cf_qual_o_tipo_de_cadastro} >
                                     <FormControlLabel control={<Radio value='PF' />} label='Pessoa Física' />
                                     <FormControlLabel control={<Radio value='PJ' />} label='Pessoa Jurídica' />
@@ -85,7 +85,7 @@ export default function Forms() {
                         <Box m={1} pt={3}>
                             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
                                 <InputLabel htmlFor="filled-adornment-amount">Valor de capital para levantar</InputLabel>
-                                <FilledInput startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                <FilledInput startAdornment={<InputAdornment position="start">R$</InputAdornment>}
                                     id="filled-adornment-amount" onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cf_valor_de_capital_para_levantar} error={!!errors.cf_valor_de_capital_para_levantar} label='Valor de Capital para levantar' name='payload.cf_valor_de_capital_para_levantar' type='text' />
                                 <FormHelperText>{errors.cf_valor_de_capital_para_levantar}</FormHelperText>
                             </FormControl>
@@ -94,7 +94,7 @@ export default function Forms() {
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <FormLabel>Prazo para quitar a operação <span> *Obrigatório</span></FormLabel>
+                                <FormLabel>Prazo para quitar a operação <span>(*)</span></FormLabel>
                                 <RadioGroup onChange={handleChange} name='payload.cf_prazo_de_quitacao_anos' label='Prazo para quitar operação' value={values.cf_prazo_de_quitacao_anos} >
                                     <FormControlLabel control={<Radio value='5 Anos' />} label='5 Anos' />
                                     <FormControlLabel control={<Radio value='10 Anos' />} label='10 Anos' />
@@ -108,7 +108,7 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <FormLabel>Possui qual tipo de garantia imobiliária?<span> *Obrigatório</span></FormLabel>
+                                <FormLabel>Possui qual tipo de garantia imobiliária?<span>(*)</span></FormLabel>
                                 <RadioGroup onChange={handleChange} name='payload.cf_tipogarantia' label='Possui qual tipo de garantia?' value={values.cf_tipogarantia} >
                                     <FormControlLabel control={<Radio value='Residencial' />} label='Residencial' />
                                     <FormControlLabel control={<Radio value='Terreno' />} label='Terreno' />
@@ -135,7 +135,7 @@ export default function Forms() {
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <FormLabel>O imóvel está regularizado e 100% quitado? <span> *Obrigatório</span></FormLabel>
+                                <FormLabel>O imóvel está regularizado e 100% quitado? <span>(*)</span></FormLabel>
                                 <RadioGroup onChange={handleChange} name='payload.cf_imovelreg' label='O imóvel esta regularizado e 100% quitado?' value={values.cf_imovelreg}  >
                                     <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                     <FormControlLabel control={<Radio value='Não' />} label='Não' />
@@ -148,7 +148,7 @@ export default function Forms() {
                     <Col md={6}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
-                                <FormLabel>Possui capital para quitar "entrada" ou "lance"? <span> *Obrigatório</span></FormLabel>
+                                <FormLabel>Possui capital para quitar "entrada" ou "lance"? <span>(*)</span></FormLabel>
                                 <RadioGroup onChange={handleChange} name='payload.cf_capitalquitar' label='Possui capital para quitar "entrada" ou "lance"?' value={values.cf_capitalquitar}  >
                                     <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                     <FormControlLabel control={<Radio value='Não' />} label='Não' />
@@ -160,7 +160,7 @@ export default function Forms() {
                         {!!(values.cf_capitalquitar === 'Não') &&
                             <Box m={1} pt={3}>
                                 <FormControl fullWidth>
-                                    <FormLabel>Possui segunda garantia imobiliária? <span> *Obrigatório</span></FormLabel>
+                                    <FormLabel>Possui segunda garantia imobiliária? <span>(*)</span></FormLabel>
                                     <RadioGroup onChange={handleChange} name='payload.cf_segundagarantia' label='Possui segunda garantia imobiliária?' value={values.cf_segundagarantia}>
                                         <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                         <FormControlLabel control={<Radio value='Não' />} label='Não' />
