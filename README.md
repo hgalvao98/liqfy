@@ -8,6 +8,8 @@ To test this project locally, clone this repository following by a npm install a
 
 If you want to visit the project the link is:
 
+#liqfy.surge.sh
+
 #
 
 
