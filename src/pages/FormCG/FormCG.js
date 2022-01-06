@@ -20,10 +20,10 @@ export default function FormCG() {
                 }
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
             })
             .catch((err) => {
-                alert(err.response.data.message);
+                // alert(err.response.data.message);
             })
     }
 
@@ -34,10 +34,7 @@ export default function FormCG() {
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
-                        console.log(values)
-                        alert('Informações enviadas com sucesso!');
                         sendForm(values);
-                        resetForm();
                         setSubmitting(false);
                     }}
                     validateOnChange={false}

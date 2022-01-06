@@ -20,9 +20,10 @@ export default function FormCO() {
                 }
             })
             .then((res) => {
+
             })
             .catch((err) => {
-                alert(err.response.data.message);
+                // alert(err.response.data.message);
             })
     }
 
@@ -32,14 +33,10 @@ export default function FormCO() {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
-                        console.log(values)
-                        alert('Informações enviadas com sucesso!');
+                    onSubmit={(values, event) => {
                         sendForm(values);
-                        resetForm();
-                        setSubmitting(false);
+                        event.preventDefault();
                     }}
-                    validateOnChange={false}
                 >
                     <Forms />
                 </Formik>

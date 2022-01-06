@@ -172,7 +172,7 @@ export default function Forms() {
                 <Buttons>
                     <Button onClick={() => goToHome(history)} style={{ backgroundColor: '#1E2C51', color: 'white' }} variant="contained" type='button'>Voltar para Home</Button>
 
-                    <Button type='submit' style={{ backgroundColor: '#56DD27' }} variant="contained">{isSubmitting ? 'Loading...' : 'Enviar'}</Button>
+                    <Button type='submit' id='botao' style={{ backgroundColor: '#56DD27' }} variant="contained">Enviar</Button>
                 </Buttons>
             </form>
         </FormCard >
