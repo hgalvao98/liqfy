@@ -1,14 +1,14 @@
 import { Button, FilledInput, FormControl, FormControlLabel, FormHelperText, FormLabel, InputAdornment, InputLabel, makeStyles, Radio, RadioGroup, TextField } from '@material-ui/core';
 import { Row, Col } from 'react-grid-system';
-import { useFormikContext } from 'formik'
+import { ErrorMessage, Form, useFormikContext } from 'formik'
 import FormCard from '../../components/FormCard';
 import Box from '@material-ui/core/Box';
 import { useHistory } from 'react-router-dom';
 import { goToHome } from '../../routes/coordinator'
-import { Buttons } from './styles'
+import { Buttons, Message } from './styles'
 import React from 'react'
 import InputMask from 'react-input-mask';
-import CurrencyTextField from '@unicef/material-ui-currency-textfield'
+import CurrencyInput from '../../CurrencyMask/CurencyInput'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,7 +27,7 @@ export default function Forms() {
     return (
         <FormCard showShadow>
             <h1>Capital de Giro</h1>
-            <form onSubmit={submitForm} name="Capital de Giro">
+            <Form name="Capital de Giro">
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
@@ -37,6 +37,7 @@ export default function Forms() {
                                     <FormControlLabel control={<Radio value='PF' />} label='Pessoa Física' />
                                     <FormControlLabel control={<Radio value='PJ' />} label='Pessoa Jurídica' />
                                 </RadioGroup>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_qual_o_tipo_de_cadastro' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -46,6 +47,7 @@ export default function Forms() {
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
                                 <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cf_nome_completo} error={!!errors.cf_nome_completo} className={classes.root} helperText={errors.cf_nome_completo} label='Nome Completo' name='payload.cf_nome_completo' type='text' placeholder='Nome Completo' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_nome_completo' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -69,6 +71,7 @@ export default function Forms() {
                                         />
                                     )}
                                 </InputMask>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_celular' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -76,6 +79,7 @@ export default function Forms() {
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
                                 <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.email} error={!!errors.email} helperText={errors.email} label='Email' name='payload.email' type='email' placeholder='' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.email' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -84,10 +88,9 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
-                                <InputLabel htmlFor="filled-adornment-amount">Valor de capital para levantar</InputLabel>
-                                <FilledInput startAdornment={<InputAdornment position="start">R$</InputAdornment>}
-                                    id="filled-adornment-amount" onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cf_valor_de_capital_para_levantar} error={!!errors.cf_valor_de_capital_para_levantar} label='Valor de Capital para levantar' name='payload.cf_valor_de_capital_para_levantar' type='text' />
-                                <FormHelperText>{errors.cf_valor_de_capital_para_levantar}</FormHelperText>
+                                <FormLabel>Valor de Capital para levantar<span>(*)</span></FormLabel>
+                                <CurrencyInput style={{ backgroundColor: '#F8F9FA' }} value={values.cf_valor_de_capital_para_levantar} error={!!errors.cf_valor_de_capital_para_levantar} label='Valor de Capital para levantar' name='payload.cf_valor_de_capital_para_levantar' type='text' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_valor_de_capital_para_levantar' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -100,6 +103,7 @@ export default function Forms() {
                                     <FormControlLabel control={<Radio value='10 Anos' />} label='10 Anos' />
                                     <FormControlLabel control={<Radio value='15 Anos' />} label='15 Anos' />
                                 </RadioGroup>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_prazo_de_quitacao_anos' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -117,6 +121,7 @@ export default function Forms() {
                                     <FormControlLabel control={<Radio value='Rural' />} label='Rural' />
                                     <FormControlLabel control={<Radio value='Nenhuma' />} label='Nenhuma' />
                                 </RadioGroup>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_tipogarantia' />
                             </FormControl>
                         </Box>
                     </Col>
@@ -125,14 +130,13 @@ export default function Forms() {
                     <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
-                                <InputLabel htmlFor="filled-adornment-amount">Estimativa de avaliação do imóvel</InputLabel>
-                                <FilledInput startAdornment={<InputAdornment position="start">R$</InputAdornment>}
-                                    id="filled-adornment-amount" onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cf_estimativa_de_avaliacao_do_imovel} error={!!errors.cf_estimativa_de_avaliacao_do_imovel} label='Valor de Capital para levantar' name='payload.cf_estimativa_de_avaliacao_do_imovel' type='text' />
-                                <FormHelperText>{errors.cf_estimativa_de_avaliacao_do_imovel}</FormHelperText>
+                                <FormLabel>Estimativa de avaliação do imóvel<span>(*)</span></FormLabel>
+                                <CurrencyInput style={{ backgroundColor: '#F8F9FA' }} value={values.cf_estimativa_de_avaliacao_do_imovel} error={!!errors.cf_estimativa_de_avaliacao_do_imovel} label='Valor de Capital para levantar' name='payload.cf_estimativa_de_avaliacao_do_imovel' type='text' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_estimativa_de_avaliacao_do_imovel' />
                             </FormControl>
                         </Box>
                     </Col>
-                    <Col md={6}>
+                    <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
                                 <FormLabel>O imóvel está regularizado e 100% quitado? <span>(*)</span></FormLabel>
@@ -140,12 +144,14 @@ export default function Forms() {
                                     <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                     <FormControlLabel control={<Radio value='Não' />} label='Não' />
                                 </RadioGroup>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_imovelreg' />
+
                             </FormControl>
                         </Box>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={6}>
+                    <Col md={12}>
                         <Box m={1} pt={3}>
                             <FormControl fullWidth>
                                 <FormLabel>Possui capital para quitar "entrada" ou "lance"? <span>(*)</span></FormLabel>
@@ -153,10 +159,12 @@ export default function Forms() {
                                     <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                     <FormControlLabel control={<Radio value='Não' />} label='Não' />
                                 </RadioGroup>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_capitalquitar' />
+
                             </FormControl>
                         </Box>
                     </Col>
-                    <Col md={6}>
+                    <Col md={12}>
                         {!!(values.cf_capitalquitar === 'Não') &&
                             <Box m={1} pt={3}>
                                 <FormControl fullWidth>
@@ -165,6 +173,7 @@ export default function Forms() {
                                         <FormControlLabel control={<Radio value='Sim' />} label='Sim' />
                                         <FormControlLabel control={<Radio value='Não' />} label='Não' />
                                     </RadioGroup>
+                                    <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_segundagarantia' />
                                 </FormControl>
                             </Box>}
                     </Col>
@@ -174,7 +183,7 @@ export default function Forms() {
 
                     <Button type='submit' style={{ backgroundColor: '#56DD27' }} variant="contained">{isSubmitting ? 'Loading...' : 'Enviar'}</Button>
                 </Buttons>
-            </form>
+            </Form>
         </FormCard >
 
 

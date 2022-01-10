@@ -19,3 +19,6 @@ export const Buttons = styled.div`
         margin:4px;
     }
 `
+export const Message = styled.div`
+    color:red;
+`

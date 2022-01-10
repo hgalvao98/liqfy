@@ -4,7 +4,7 @@ export const Main = styled.div`
     background-color:#1E2C51;
     width:30vw;
     display:flex;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:center;
     flex-direction:column;
     border-radius:1em;
@@ -72,7 +72,7 @@ export const Buttons = styled.div`
         text-decoration:none;
         border:none;
         border-radius:1em;
-        height:12vh;
+        height:8vh;
         width:48vw;
         margin-bottom:0.5em;
         :hover{
@@ -86,7 +86,7 @@ export const Buttons = styled.div`
         text-decoration:none;
         border:none;
         border-radius:1em;
-        height:12vh;
+        height:8vh;
         width:48vw;
         margin-bottom:0.5em;
         color:#1E2C51;

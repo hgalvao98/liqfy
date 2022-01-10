@@ -26,30 +26,30 @@ export const validationSchema = Yup.object().shape({
     payload: Yup.object().shape({
         conversion_identifier: Yup.string(),
         cf_qual_o_tipo_de_cadastro: Yup.string()
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_nome_completo: Yup.string()
             .min(3, 'Digite seu nome completo')
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_celular: Yup.string()
-            .required('Obrigatório')
+            .required('*Obrigatório')
             .min(11, 'Digite todos os numeros com DDD'),
         email: Yup.string()
             .email('E-mail invalido')
-            .required('Required'),
+            .required('*Obrigatório'),
         cf_valor_de_capital_para_levantar: Yup.number()
-            .required('Obrigatório')
+            .required('*Obrigatório')
             .min(1, 'Digite um valor de no minimo 1 digito'),
         cf_prazo_de_quitacao_anos: Yup.string()
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_tipogarantia: Yup.string()
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_estimativa_de_avaliacao_do_imovel: Yup.string()
-            .required('Obrigatório')
+            .required('*Obrigatório')
             .min(1, 'Digite um valor de no minimo 1 digito'),
         cf_imovelreg: Yup.string()
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_capitalquitar: Yup.string()
-            .required('Obrigatório'),
+            .required('*Obrigatório'),
         cf_segundagarantia: Yup.string()
     })
 })

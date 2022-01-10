@@ -6,10 +6,13 @@ import Forms from './form'
 import { Container } from 'react-grid-system';
 import { validationSchema } from './form-data';
 import axios from 'axios'
+import { goToSuccessPage } from '../../routes/coordinator';
+import { useHistory } from 'react-router-dom';
 
 export default function FormCG() {
 
     const BASE_URL = "https://api.rd.services/platform/conversions?api_key=RYwKwZxyxSHeSdkwCSZHpzTgIQzFDEAoHRXE&";
+    const history = useHistory();
 
 
     const sendForm = (body) => {
@@ -20,7 +23,7 @@ export default function FormCG() {
                 }
             })
             .then((res) => {
-                // console.log(res)
+
             })
             .catch((err) => {
                 // alert(err.response.data.message);
@@ -36,8 +39,8 @@ export default function FormCG() {
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         sendForm(values);
                         setSubmitting(false);
+                        goToSuccessPage(history);
                     }}
-                    validateOnChange={false}
                 >
                     <Forms />
                 </Formik>

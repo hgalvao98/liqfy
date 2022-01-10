@@ -9,3 +9,7 @@ export const goToFormCO = (history) => {
 export const goToFormCG = (history) => {
     history.push('/form-capital-de-giro')
 }
+
+export const goToSuccessPage = (history) => {
+    history.push('/success')
+}
