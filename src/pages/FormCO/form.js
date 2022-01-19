@@ -8,7 +8,8 @@ import { goToHome } from '../../routes/coordinator'
 import { Buttons, Message } from './styles'
 import React from 'react'
 import InputMask from 'react-input-mask';
-import CurrencyInput from '../../CurrencyMask/CurencyInput'
+import CurrencyInput2 from '../../CurrencyMaskCapitalValue/CurencyInput2'
+import CurrencyInput1 from '../../CurrencyMaskEstimate/CurencyInput1';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,65 +32,9 @@ export default function Forms() {
                 <Row>
                     <Col md={12}>
                         <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <FormLabel>Qual o tipo de cadastro? <span>(*)</span></FormLabel>
-                                <RadioGroup onChange={handleChange} name='payload.cf_qual_o_tipo_de_cadastro' label='payload.cf_qual_o_tipo_de_cadastro' value={values.cf_qual_o_tipo_de_cadastro} >
-                                    <FormControlLabel control={<Radio value='PF' />} label='Pessoa Física' />
-                                    <FormControlLabel control={<Radio value='PJ' />} label='Pessoa Jurídica' />
-                                </RadioGroup>
-                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_qual_o_tipo_de_cadastro' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.cf_nome_completo} error={!!errors.cf_nome_completo} className={classes.root} helperText={errors.cf_nome_completo} label='Nome Completo' name='payload.cf_nome_completo' type='text' placeholder='Nome Completo' />
-                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_nome_completo' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <InputMask
-                                    mask={'(99)99999-9999'}
-                                    value={values.cf_celular}
-                                    onChange={handleChange}>
-                                    {() => (
-                                        <TextField
-                                            variant='standard'
-                                            onChange={handleChange}
-                                            label='Celular'
-                                            name='payload.cf_celular'
-                                            error={!!errors.cf_celular}
-                                            helperText={errors.cf_celular}
-                                            type="text"
-                                            style={{ backgroundColor: '#F8F9FA' }}
-                                        />
-                                    )}
-                                </InputMask>
-                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_celular' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                    <Col md={6}>
-                        <Box m={1} pt={3}>
-                            <FormControl fullWidth>
-                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.email} error={!!errors.email} helperText={errors.email} label='Email' name='payload.email' type='email' placeholder='' />
-                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.email' />
-                            </FormControl>
-                        </Box>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={12}>
-                        <Box m={1} pt={3}>
                             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
                                 <FormLabel>Valor de Capital para levantar<span>(*)</span></FormLabel>
-                                <CurrencyInput style={{ backgroundColor: '#F8F9FA' }} value={values.cf_valor_de_capital_para_levantar} error={!!errors.cf_valor_de_capital_para_levantar} label='Valor de Capital para levantar' name='payload.cf_valor_de_capital_para_levantar' type='text' />
+                                <CurrencyInput2 type='text' />
                                 <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_valor_de_capital_para_levantar' />
                             </FormControl>
                         </Box>
@@ -131,7 +76,7 @@ export default function Forms() {
                         <Box m={1} pt={3}>
                             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
                                 <FormLabel>Estimativa de avaliação do imóvel<span>(*)</span></FormLabel>
-                                <CurrencyInput style={{ backgroundColor: '#F8F9FA' }} value={values.cf_estimativa_de_avaliacao_do_imovel} error={!!errors.cf_estimativa_de_avaliacao_do_imovel} label='Valor de Capital para levantar' name='payload.cf_estimativa_de_avaliacao_do_imovel' type='text' />
+                                <CurrencyInput1 style={{ backgroundColor: '#F8F9FA' }} type='text' />
                                 <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_estimativa_de_avaliacao_do_imovel' />
                             </FormControl>
                         </Box>
@@ -165,7 +110,7 @@ export default function Forms() {
                         </Box>
                     </Col>
                     <Col md={12}>
-                        {!!(values.cf_capitalquitar === 'Não') &&
+                        {!!(values.payload.cf_capitalquitar === 'Não') &&
                             <Box m={1} pt={3}>
                                 <FormControl fullWidth>
                                     <FormLabel>Possui segunda garantia imobiliária? <span>(*)</span></FormLabel>
@@ -176,6 +121,48 @@ export default function Forms() {
                                     <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.cf_segundagarantia' />
                                 </FormControl>
                             </Box>}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.nome} error={!!errors.nome} className={classes.root} helperText={errors.nome} label='Nome Completo' name='payload.nome' type='text' placeholder='Nome Completo' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.nome' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <InputMask
+                                    mask={'(99)99999-9999'}
+                                    value={values.personal_phone}
+                                    onChange={handleChange}>
+                                    {() => (
+                                        <TextField
+                                            variant='standard'
+                                            onChange={handleChange}
+                                            label='Celular'
+                                            name='payload.personal_phone'
+                                            error={!!errors.personal_phone}
+                                            helperText={errors.personal_phone}
+                                            type="text"
+                                            style={{ backgroundColor: '#F8F9FA' }}
+                                        />
+                                    )}
+                                </InputMask>
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.personal_phone' />
+                            </FormControl>
+                        </Box>
+                    </Col>
+                    <Col md={6}>
+                        <Box m={1} pt={3}>
+                            <FormControl fullWidth>
+                                <TextField onChange={handleChange} style={{ backgroundColor: '#F8F9FA' }} value={values.email} error={!!errors.email} helperText={errors.email} label='Email' name='payload.email' type='email' placeholder='' />
+                                <ErrorMessage render={msg => <Message>{msg}</Message>} name='payload.email' />
+                            </FormControl>
+                        </Box>
                     </Col>
                 </Row>
                 <Buttons>

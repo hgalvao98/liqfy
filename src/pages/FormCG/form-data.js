@@ -6,9 +6,8 @@ export const initialValues = {
     event_family: 'CDP',
     payload: {
         conversion_identifier: 'formulario-cg',
-        cf_qual_o_tipo_de_cadastro: '',
-        cf_nome_completo: '',
-        cf_celular: '',
+        name: '',
+        personal_phone: '',
         email: '',
         cf_valor_de_capital_para_levantar: '',
         cf_prazo_de_quitacao_anos: '',
@@ -25,18 +24,16 @@ export const validationSchema = Yup.object().shape({
     event_family: Yup.string(),
     payload: Yup.object().shape({
         conversion_identifier: Yup.string(),
-        cf_qual_o_tipo_de_cadastro: Yup.string()
-            .required('*Obrigatório'),
-        cf_nome_completo: Yup.string()
+        name: Yup.string()
             .min(3, 'Digite seu nome completo')
             .required('*Obrigatório'),
-        cf_celular: Yup.string()
+        personal_phone: Yup.string()
             .required('*Obrigatório')
             .min(11, 'Digite todos os numeros com DDD'),
         email: Yup.string()
             .email('E-mail invalido')
             .required('*Obrigatório'),
-        cf_valor_de_capital_para_levantar: Yup.number()
+        cf_valor_de_capital_para_levantar: Yup.string()
             .required('*Obrigatório')
             .min(1, 'Digite um valor de no minimo 1 digito'),
         cf_prazo_de_quitacao_anos: Yup.string()

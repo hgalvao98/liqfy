@@ -39,6 +39,7 @@ export const Buttons = styled.div`
         background-color:#09CA05;
         text-decoration:none;
         border:none;
+        color:black !important;
         border-radius:1em;
         height:8vh;
         width:24vw;
@@ -57,7 +58,7 @@ export const Buttons = styled.div`
         height:8vh;
         width:24vw;
         margin-bottom:0.5em;
-        color:#1E2C51;
+        color:#1E2C51 !important;
         :hover{
             background-color:grey;
             color:white;
